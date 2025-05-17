@@ -1,0 +1,132 @@
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+chrome_options=Options()
+chrome_options.add_argument("--force-device-scale-factor='100%'")
+driver = webdriver.Chrome(options=chrome_options)
+driver.maximize_window()
+
+
+driver.get("https://qa.unifytwin.com/#/p/login")
+time.sleep(15)
+
+driver.find_element(By.ID,"loginUserID").send_keys("changer")
+driver.find_element(By.ID,"loginPassword").send_keys("Changer@123")
+driver.find_element(By.ID,"login_in_to_portal").click()
+time.sleep(10)
+
+#TC_OO1 assets managment (parameter Categories creation)
+
+driver.find_element(By.XPATH,"//*[@id='print__screen']/kl-pages/kl-left-side-bar/div/ul/div[1]/div/div").click()
+time.sleep(5)
+driver.find_element(By.XPATH,"//*[@id='print__screen']/kl-pages/kl-left-side-bar/div/ul/div[2]/li[1]/div/div[2]").click()
+time.sleep(5)
+driver.find_element(By.XPATH,"//*[@id='print__screen']/kl-pages/kl-left-side-bar/div/ul/div[2]/ul/li[2]/div/span").click()
+time.sleep(5)
+# driver.find_element(By.XPATH,"//ul[@id='myTab']/li[3]/a").click()
+# time.sleep(8)
+# driver.find_element(By.CSS_SELECTOR,"button[id='addnew']").click()
+# time.sleep(2)
+# driver.find_element(By.CSS_SELECTOR,"input[formcontrolname='unit_group_name']").send_keys("Sample1")
+# driver.find_element(By.CSS_SELECTOR,"input[formcontrolname='description']").send_keys("Sample1")
+# time.sleep(5)
+# # driver.find_element(By.XPATH, "//button[@contains(text(), 'Save')]").click()
+# driver.find_element(By.XPATH,"//*[@id='bodyId']/ngb-modal-window/div/div/div/div[3]/button[2]").click()
+# time.sleep(10)
+# driver.find_element(By.CSS_SELECTOR,"input[aria-label='Unit Group Name Filter Input']").send_keys("Sample1")
+# time.sleep(5)
+# driver.find_element(By.ID,"action_edit_0").click()
+# time.sleep(3)
+# driver.find_element(By.CSS_SELECTOR,"input[formcontrolname='unit_group_name']").send_keys("grp")
+# time.sleep(5)
+# # driver.find_element(By.XPATH, "//button[@contains(text(), 'Save')]").click()
+# driver.find_element(By.XPATH,"//*[@id='bodyId']/ngb-modal-window/div/div/div/div[3]/button[2]").click()
+# time.sleep(5)
+# driver.find_element(By.CSS_SELECTOR,"input[aria-label='Unit Group Name Filter Input']").send_keys("Sample1grp")
+# time.sleep(5)
+# driver.find_element(By.ID,"action_delete_0").click()
+# time.sleep(2)
+# driver.find_element(By.ID,"btn_confirm_delete").click()
+# time.sleep(5)
+# driver.find_element(By.CSS_SELECTOR,"input[aria-label='Tag Category Name Filter Input']").send_keys("Sample1grp")
+# time.sleep(5)
+# driver.find_element(By.ID,"download").click()
+
+#TC_OO2 assets managment (parameter group creation)
+
+# driver.find_element(By.XPATH,"//ul[@id='myTab']/li[2]/a").click()
+# time.sleep(10)
+# driver.find_element(By.ID,"addnew").click()
+# time.sleep(5)
+# driver.find_element(By.CSS_SELECTOR,"ng-select[placeholder='From Unit']").click()
+# time.sleep(3)
+# driver.find_element(By.ID,"id='a43474ed1850'").click()
+# time.sleep(5)
+# driver.find_element(By.CSS_SELECTOR,"ng-select[placeholder='From Unit']").send_keys("Bar")
+# time.sleep(5)
+# driver.find_element(By.CSS_SELECTOR,"input[formcontrolname='unit_group_name']").send_keys("121")
+# time.sleep(2)
+# driver.find_element(By.XPATH, "//button[@contains(text(), 'Save')]").click()
+# time.sleep(5)
+# driver.find_element(By.CSS_SELECTOR,"input[aria-label='Multiply the length value with Filter Input']").send_keys('61')
+# time.sleep(10)
+# driver.find_element(By.ID,"action_edit_0").click()
+# time.sleep(3)
+# driver.find_element(By.CSS_SELECTOR,"input[formcontrolname='value']").send_keys("1")
+# time.sleep(5)
+# driver.find_element(By.XPATH,"//*[@id='bodyId']/ngb-modal-window/div/div/div/div[3]/button[2]").click()
+#
+# time.sleep(5)
+# driver.find_element(By.CSS_SELECTOR,"input[aria-label='Multiply the length value with Filter Input']").send_keys('611')
+# time.sleep(5)
+# driver.find_element(By.ID,"action_delete_0").click()
+# time.sleep(2)
+# driver.find_element(By.ID,"btn_confirm_delete").click()
+# time.sleep(4)
+# driver.find_element(By.ID,"download").click()
+# time.sleep(10)
+
+
+
+#TC_OO2 assets managment (parameter group creation)
+
+driver.find_element(By.XPATH,"//ul[@id='myTab']/li[1]/a").click()
+time.sleep(10)
+driver.find_element(By.ID,"addnew").click()
+time.sleep(5)
+driver.find_element(By.CSS_SELECTOR,"input[formcontrolname='name']").click()
+time.sleep(4)
+driver.find_element(By.CSS_SELECTOR,"input[formcontrolname='notation']").click()
+time.sleep(4)
+driver.find_element(By.XPATH,"//div[contains(@class,'ng-option')]/span[text()='%']").click()
+time.sleep(2)
+driver.find_element(By.CSS_SELECTOR,"input[formcontrolname='unit_group_name']").send_keys("121")
+time.sleep(2)
+driver.find_element(By.XPATH, "//button[@contains(text(), 'Save')]").click()
+time.sleep(5)
+driver.find_element(By.CSS_SELECTOR,"input[aria-label='Unit Filter Input']").send_keys('sample')
+time.sleep(10)
+driver.find_element(By.ID,"action_edit_0").click()
+time.sleep(3)
+driver.find_element(By.CSS_SELECTOR,"input[formcontrolname='name']").send_keys("1")
+time.sleep(5)
+driver.find_element(By.XPATH, "//button[@contains(text(), 'Save')]").click()
+time.sleep(4)
+driver.find_element(By.CSS_SELECTOR,"input[aria-label='Unit Filter Input']").send_keys('sample1')
+time.sleep(10)
+
+driver.find_element(By.ID,"action_delete_0").click()
+time.sleep(2)
+# driver.find_element(By.ID,"btn_confirm_delete").click()
+# time.sleep(4)
+driver.find_element(By.ID,"download").click()
+time.sleep(10)
+
+
