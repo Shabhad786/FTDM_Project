@@ -7,6 +7,8 @@ from PageObjects.LoginPage import LoginPage  # Ensure this import is correct
 from Utilities.readProperties import ReadConfig
 from Utilities.customLogger import LogGen
 from PageObjects.Create_ParameterCategory import Create_ParameterCategory  # Assuming this class is in PageObjects
+from PageObjects.Units import Units_Page
+
 
 
 class Test_Create_ParameterCategory:
@@ -102,3 +104,44 @@ class Test_Create_ParameterCategory:
         self.parameter.download_parameter()
         self.logger.info("Test execution completed successfully.")
         self.driver.close()
+
+
+
+class Test_Create_Units:
+    Ftdm_URL = ReadConfig.getApplicationURL()
+    username = ReadConfig.getusername()
+    password = ReadConfig.getpassword()
+    logger = LogGen.loggen()
+
+    def test_Create_UnitGroup(self, setup):
+        self.driver = setup
+        self.driver.get(self.Ftdm_URL)
+        self.driver.maximize_window()
+
+        # Log in
+        self.LP = LoginPage(self.driver)
+        self.LP.setUserName(self.username)
+        self.LP.setPassword(self.password)
+        self.LP.clickLogin()
+
+
+        # Wait until login is complete
+        time.sleep(10)  # You can replace this with WebDriverWait
+
+        # Create an instance of Create_ParameterGroup
+        self.UnitGroup = create_Unit_Group(self.driver)
+
+        # Perform actions for creating, searching, deleting, and downloading the parameter group
+        self.UnitGroup.expand_navigation()
+
+        # Assuming create_parameter_category, search_parameter_category, etc., take some parameters
+        param_cat=self.paramCategory.create_parameter_Category()
+        self.paramCategory.Edit_parameter_Category(param_cat)
+        self.paramCategory.Clone_Parameter_Category(param_cat + "1")
+        self.paramCategory.delete_parameter_Category(param_cat + "12")
+        self.paramCategory.download_parameter_Category()
+        self.logger.info("Test execution completed successfully.")
+
+
+
+

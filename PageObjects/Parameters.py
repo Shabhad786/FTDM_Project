@@ -5,9 +5,9 @@ import random
 import string
 
 class Create_ParameterCategory:
-    Expand_Navigation_By_XPATH = "//*[@id='print__screen']/kl-pages/kl-left-side-bar/div/ul/div[1]/div/div"
-    Select_AssetManagment_By_XPATH = "//*[@id='print__screen']/kl-pages/kl-left-side-bar/div/ul/div[2]/li[1]/div/div[2]"
-    Select_Parameters_By_XPATH = "//*[@id='print__screen']/kl-pages/kl-left-side-bar/div/ul/div[2]/ul/li[1]/div/span"
+    Expand_Navigation_By_XPATH = "//div[@class='bar-icon ng-star-inserted']"
+    Select_AssetManagment_By_XPATH = "//span[@class='fa fa-angle-down']"
+    Select_Parameters_By_XPATH = "//span[@title='Parameters']"
     Select_ParameterCategory_By_ID = "parameter_category_tab"
     Create_ParameterCategory_By_CSS_SELECTOR = "button[id='addnew']"
     Input_ParameterCategoryName_By_ID = "param_category_name"
@@ -36,6 +36,8 @@ class Create_ParameterCategory:
     Click_Subgroup_ImputField_CSS_Selector= "ng-select[placeholder='Select Parameter category..']"
     ParameterGroup_By_Xpath = "//div[contains(@class,'ng-option')]/span[text()='NewParamCat12']"
     Click_Paramgroup_Edit_By_ID = "action_edit_0"
+    Delete_parameterGroup_By_ID = "action_delete_0"
+    Confirm_Delete_By_ID = "btn_confirm_delete"
     Select_Parameter_By_ID = "parameter_tab"
     Create_Parameter_By_ID = "addnew"
     Input_Param_name_By_ID = "param_name"
@@ -49,7 +51,10 @@ class Create_ParameterCategory:
     Edit_Param_name_By_ID = "action_edit_0"
     Delete_parameter_By_ID = "action_delete_0"
     Confirm_Delete_By_ID = "btn_confirm_delete"
-
+    Upload_Parameters="upload"
+    File_Upload="(//input[@id='fileBlock'])[1]"
+    Preview_File="//button[contains(text(),'Preview')]"
+    Save_File="(//button[contains(text(),'Save')])[1]"
 
 
      # driver.get_screenshot_as_png()
@@ -64,11 +69,12 @@ class Create_ParameterCategory:
         self.driver.find_element(By.XPATH, self.Select_AssetManagment_By_XPATH).click()
         self.driver.find_element(By.XPATH, self.Select_Parameters_By_XPATH).click()
         time.sleep(5)
-        self.driver.find_element(By.ID, self.Select_ParameterCategory_By_ID).click()
-        time.sleep(5)
+
 
     def create_parameter_Category(self):
         # Using the updated syntax for element interaction
+        self.driver.find_element(By.ID, self.Select_ParameterCategory_By_ID).click()
+        time.sleep(5)
         self.driver.find_element(By.CSS_SELECTOR, self.Create_ParameterCategory_By_CSS_SELECTOR).click()
         time.sleep(5)
         random_text = "Parameter_Cat_" + ''.join(random.choices(string.ascii_letters + string.digits, k=6))
@@ -107,10 +113,10 @@ class Create_ParameterCategory:
         # Updated to use the correct syntax
         self.driver.find_element(By.CSS_SELECTOR, self.Search_Filter_By_CSS_SELECTOR).send_keys(search_text)
         time.sleep(5)
-        self.driver.find_element(By.ID, self.Delete_param_By_ID).click()
+        self.driver.find_element(By.ID, self.Delete_parameterCategory_By_ID).click()
         self.driver.find_element(By.ID, self.Confirm_Delete_By_ID).click()
-        self.driver.refresh()
         time.sleep(3)
+        self.driver.refresh()
         self.driver.find_element(By.CSS_SELECTOR, self.Search_Filter_By_CSS_SELECTOR).send_keys(search_text)
         time.sleep(3)
 
@@ -157,11 +163,11 @@ class Create_ParameterCategory:
     # Updated to use the correct syntax
      self.driver.find_element(By.CSS_SELECTOR, self.Search_Filter_By_CSS_SELECTOR).send_keys(search_text)
      time.sleep(5)
-     self.driver.find_element(By.ID, self.Delete_param_By_ID).click()
+     self.driver.find_element(By.ID, self.Delete_parameterGroup_By_ID).click()
      time.sleep(5)
      self.driver.find_element(By.ID, self.Confirm_Delete_By_ID).click()
-     self.driver.refresh()
      time.sleep(3)
+     self.driver.refresh()
      self.driver.find_element(By.CSS_SELECTOR, self.Search_Filter_By_CSS_SELECTOR).send_keys(search_text)
      time.sleep(3)
 
@@ -229,9 +235,28 @@ class Create_ParameterCategory:
 
     def download_parameter(self):
     # Updated to use the correct syntax
+     self.driver.find_element(By.ID,self.Upload_Parameters).click()
+     time.sleep(3)
+     file=self.driver.find_element(By.XPATH, self.File_Upload)
+     time.sleep(4)
+     path=r"C:\Users\mahammad.shaik\Python\Scripts\FTDM_Project\TestData\Parameter Upload.csv"
+     file.send_keys(path)
+     self.driver.find_element(By.XPATH, self.Preview_File).click()
+     self.driver.find_element(By.XPATH,self.Save_File).click()
+     time.sleep(5)
      self.driver.find_element(By.ID, self.Download_parameterCategory_By_ID).click()
-     time.sleep(10)
+     time.sleep(5)
+
+
+    # Units Page
 
 
 
+
+
+
+    Select_Units_By_XPATH = "//span[@title='Parameters']"
+    Create_UnitGroup="button[id='addnew']"
+    Group_Name="input[formcontrolname='unit_group_name']"
+    Group_Description="input[formcontrolname='description']"
 
